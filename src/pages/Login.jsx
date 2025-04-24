@@ -18,7 +18,7 @@ const Login = () => {
         try {
             setIsLoading(true);
             const response = await axios.post(
-                'http://localhost:5001/user/login',
+                'https://skill-craft-backend-v1o6.vercel.app/user/login',
                 { name, password },
             );
     
