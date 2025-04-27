@@ -87,7 +87,7 @@ const QuestionTracker = () => {
                 return;
             }
     
-            await axios.delete(`https://skill-craft-backend-17xm.vercel.app/api/questions/delete/${userId}`);
+            await axios.delete(`https://skill-craft-backend-di79.vercel.app/api/questions/delete/${userId}`);
     
             // Remove saved questions from localStorage
             localStorage.removeItem('savedQuestions');
