@@ -59,7 +59,7 @@ const HomePage = () => {
     const fetchQuestions = async () => {
       try {
         const userId = localStorage.getItem('userId');
-        const response = await axios.get(`https://skill-craft-backend-v1o6.vercel.app/api/questions/questions/${userId}`);
+        const response = await axios.get(`https://skill-craft-backend-17xm.vercel.app/api/questions/questions/${userId}`);
 
         let questionsList = response.data.data.questions;
         if (questionsList) {
@@ -86,10 +86,7 @@ const newUser = localStorage.getItem('firstTime');
 
   const handleCreateResume = () => {
     // Option 1: Using window.location for full page redirect
-    window.location.href = 'http://localhost:8080/dashboard';
-  
-    // Option 2: If using React Router and you want to open in a new tab
-    window.open('http://localhost:8080/dashboard', '_blank');
+   alert("Under Construction")
   }
   const render = ()=>{
     switch (activeSection){
