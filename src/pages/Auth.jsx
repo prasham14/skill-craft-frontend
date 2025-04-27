@@ -49,7 +49,7 @@ const Auth = () => {
 
       if (response.data) {
         // You might want to show a success message before redirecting
-        navigate('/home');
+        navigate('/login');
         localStorage.setItem('firstTime' , 'true');
       }
     } catch (error) {
