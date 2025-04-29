@@ -17,6 +17,7 @@ const QuestionTracker = () => {
         const fetchQuestions = async () => {
             try {
                 const userId = localStorage.getItem('userId');
+                if(!userId) navigate('/login')
                 const response = await axios.get(`https://skill-craft-backend-di79.vercel.app/api/questions/questions/${userId}`);
     
                 let questionsList = response.data.data.questions;

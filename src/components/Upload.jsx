@@ -46,8 +46,6 @@ const Upload = () => {
             alert("Please upload a resume first!");
             return;
         }
-
-     
         setLoading(true);
 
         const formData = new FormData();
@@ -77,7 +75,7 @@ const Upload = () => {
         const userId = localStorage.getItem('userId');
         if (!userId) {
             alert("Please login first!");
-            return;
+            navigate('/login')
         }
 
         setSaving(true);

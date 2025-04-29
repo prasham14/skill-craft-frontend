@@ -5,6 +5,11 @@ import Welcome from '../components/Welcome';
 import Upload from '../components/Upload';
 const HomePage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const[isLoggedIn,setIsLoggedIn] = useState(false);
+  useEffect(()=>{
+    const userId = localStorage.getItem('userId');
+    if(userId)setIsLoggedIn(true);
+  },[userId])
   const navigate = useNavigate();
   const userId = localStorage.getItem('userId');
   const name = localStorage.getItem('name');
@@ -71,7 +76,12 @@ const HomePage = () => {
     };
     fetchQuestions();
   }, []);
+  const handleStart = async()=>{
 
+    if(isLoggedIn && isold )navigate('/tracker')
+    else if(isLoggedIn &&  !isold) navigate('/upload');
+  else navigate('/login')
+  }
 const newUser = localStorage.getItem('firstTime');
   const handleLogout = () => {
     localStorage.removeItem("isLoggedIn");
@@ -81,7 +91,8 @@ const newUser = localStorage.getItem('firstTime');
   }
 
   const handletracker = () => {
-    navigate('/tracker')
+    if(!isLoggedIn)navigate('/login');
+    else  navigate('/tracker')
   }
 
   const handleCreateResume = () => {
@@ -181,6 +192,12 @@ const newUser = localStorage.getItem('firstTime');
           </svg>
           Track
         </button>
+          <button className="w-full text-left  px-3 py-2 rounded-md text-base font-medium hover:bg-blue-500 transition duration-300 flex items-center gap-2" onClick={handleLogout}>
+          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+            Logout
+          </button>
       </div>
     </div>
   )}
@@ -199,7 +216,7 @@ const newUser = localStorage.getItem('firstTime');
               </p>
               <div className="mt-8 flex flex-col sm:flex-row gap-4">
                 {/* Resume Upload Button */}
-                <label className="cursor-pointer bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg transition shadow-lg flex items-center justify-center" onClick={isold ? (() => navigate('/tracker')) : (() => navigate('/upload'))}>
+                <label className="cursor-pointer bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-6 rounded-lg transition shadow-lg flex items-center justify-center" onClick={handleStart}>
                   <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
                   </svg>
