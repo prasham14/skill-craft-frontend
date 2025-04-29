@@ -6,12 +6,13 @@ import Upload from '../components/Upload';
 const HomePage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const[isLoggedIn,setIsLoggedIn] = useState(false);
+ 
+  const navigate = useNavigate();
+  const userId = localStorage.getItem('userId');
   useEffect(()=>{
     const userId = localStorage.getItem('userId');
     if(userId)setIsLoggedIn(true);
   },[userId])
-  const navigate = useNavigate();
-  const userId = localStorage.getItem('userId');
   const name = localStorage.getItem('name');
   const [activeSection,setActiveSection] = useState('');
   const bodyLanguageTips = [
@@ -141,14 +142,17 @@ const newUser = localStorage.getItem('firstTime');
           </svg>
           Track
         </button>
-        <div className="relative group">
-          <button className="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-500 transition duration-300 flex items-center gap-1" onClick={handleLogout}>
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-            </svg>
-            Logout
-          </button>
-        </div>
+        {
+          isLoggedIn?( <div className="relative group">
+            <button className="px-3 py-2 rounded-md text-sm font-medium hover:bg-blue-500 transition duration-300 flex items-center gap-1" onClick={handleLogout}>
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+              Logout
+            </button>
+          </div>):(null)
+        }
+       
         <button className="ml-4 bg-white text-blue-600 px-4 py-1 rounded-full text-sm font-medium hover:bg-blue-100 transition duration-300" onClick={handleCreateResume}>
           Start Now!
         </button>
@@ -192,12 +196,15 @@ const newUser = localStorage.getItem('firstTime');
           </svg>
           Track
         </button>
-          <button className="w-full text-left  px-3 py-2 rounded-md text-base font-medium hover:bg-blue-500 transition duration-300 flex items-center gap-2" onClick={handleLogout}>
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-            </svg>
-            Logout
-          </button>
+        {
+          isLoggedIn?( <button className="w-full text-left  px-3 py-2 rounded-md text-base font-medium hover:bg-blue-500 transition duration-300 flex items-center gap-2" onClick={handleLogout}>
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+              Logout
+            </button>):(null)
+        }
+         
       </div>
     </div>
   )}
