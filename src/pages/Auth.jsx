@@ -48,9 +48,9 @@ const Auth = () => {
       });
 
       if (response.data) {
-        // You might want to show a success message before redirecting
-        navigate('/login');
+        navigate('/home');
         localStorage.setItem('firstTime' , 'true');
+        localStorage.setItem('userId',response.data._id);
       }
     } catch (error) {
       console.error('Error:', error);
