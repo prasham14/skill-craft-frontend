@@ -18,7 +18,7 @@ const QuestionTracker = () => {
             try {
                 const userId = localStorage.getItem('userId');
                 if(!userId) navigate('/login')
-                const response = await axios.get(`https://skill-craft-backend-di79.vercel.app/api/questions/questions/${userId}`);
+                const response = await axios.get(`https://skill-craft-backend-pied.vercel.app/api/questions/questions/${userId}`);
     
                 let questionsList = response.data.data.questions;
     
@@ -88,7 +88,7 @@ const QuestionTracker = () => {
                 return;
             }
     
-            await axios.delete(`https://skill-craft-backend-di79.vercel.app/api/questions/delete/${userId}`);
+            await axios.delete(`https://skill-craft-backend-pied.vercel.app/api/questions/delete/${userId}`);
     
             // Remove saved questions from localStorage
             localStorage.removeItem('savedQuestions');

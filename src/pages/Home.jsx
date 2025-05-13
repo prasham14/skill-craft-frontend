@@ -65,7 +65,7 @@ const HomePage = () => {
     const fetchQuestions = async () => {
       try {
         const userId = localStorage.getItem('userId');
-        const response = await axios.get(`https://skill-craft-backend-di79.vercel.app/api/questions/questions/${userId}`);
+        const response = await axios.get(`https://skill-craft-backend-pied.vercel.app/api/questions/questions/${userId}`);
 
         let questionsList = response.data.data.questions;
         if (questionsList) {
