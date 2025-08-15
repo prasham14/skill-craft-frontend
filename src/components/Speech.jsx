@@ -126,7 +126,7 @@ const [code,setCode] = useState('//Write your code here');
             headers: {
                 'Content-Type': 'application/json'
             },
-            timeout: 30000 // 30 second timeout for AI processing
+            timeout: 30000 
         });
 
         if (response.data.success) {

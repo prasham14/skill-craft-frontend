@@ -226,7 +226,7 @@ const QuestionTracker = () => {
                                                 <p className="text-gray-600">{answers[currentQuestionIndex].feedback.strengths}</p>
                                             </div>
                                             <div>
-                                                <h4 className="font-medium text-gray-700 mb-1">Areas to Improve:</h4>
+                                                <h4 className="font-medium text-gray-700 mb-1">Suggestions:</h4>
                                                 <p className="text-gray-600">{answers[currentQuestionIndex].feedback.improvement_areas}</p>
                                             </div>
                                         </div>
