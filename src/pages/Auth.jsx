@@ -50,7 +50,7 @@ const Auth = () => {
       if (response.data) {
         navigate('/home');
         localStorage.setItem('firstTime' , 'true');
-        localStorage.setItem('userId',response.data._id);
+        localStorage.setItem('userId',response.data.data._id);
       }
     } catch (error) {
       console.error('Error:', error);
